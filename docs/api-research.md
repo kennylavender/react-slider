@@ -117,7 +117,7 @@ const HomeSlider = () => {
       </SliderSlides>
       <SliderDots>
         {/**
-          Todo: Can we simplify this for users? provide functions that do this mapping?
+          Todo: Can we simplify this for users? provide functions that help with this mapping?
         */}
         {slides.map((v, i) => (
           <SliderDot
