@@ -31,6 +31,8 @@ Could use standard CSS ways of doing this:
 - use specificity
   - attach class names to components that can be used to override styles.
   - could also allow a user to provide a special prefix to the class names
+  
+## API Approaches
 
 ## Allow a user to build their own Slider from our components
 
@@ -100,7 +102,7 @@ const SliderContainer = () => {
   )
 }
 ```
-### Approach 4: Provide a reducer and a black box Slider component
+### Provide a reducer and a black box Slider component
 
 #### Approach issues
 - how to let the user hook into actions, `useReducer` does not allow for middleware.
@@ -126,36 +128,48 @@ const HomeSlider = () => {
 }
 ```
 
-### Approach 5: Provide a reducer, individual components and examples
+### Provide a reducer, individual components and examples
 
-```
+```js
 import {
-  Slider,
-  configureSliderReducer,
+  SliderWrapper,
+  SliderItems,
+  SliderItem,
+  SliderArrows,
+  SliderPrevArrow,
+  SliderNextArrow,
+  SliderDots,
+  SliderDot,
+  sliderReducer,
+  sliderAutoPlay
 } from '@kennylavender/react-slider'
 
 const HomeSlider = () => {
-  const options = {
-    displayDots: false
-  }
-  
-  const sliderReducer = configureSliderReducer(options)
+
   const [state, dispatch] = useReducer(sliderReducer, sliderReducer())
+  
+  // maybe we can use individual effects for things like autoPlay instead of doing them with options?
+  useEffect(sliderAutoPlay(dispatch))
   
   const slides = [
     <p>Slide 1</p>
     <p>Slide 2</p>
-   ]
+  ]
   
   return (
     <SliderWrapper>
       <SliderSlides>
-        {items.map(v, => <SliderSlide>{v}</SliderSlide>}
+        {slides.map(v, => <SliderSlide>{v}</SliderSlide>}
       </SliderSlides>
       <SliderDots>
-        {items.map((v,i) => <SliderDot onClick={() => dispatch(sliderActions.goToIndex(i))} />)
+        {slides.map((v,i) => <SliderDot onClick={() => dispatch(sliderActions.goToSlideIndex(i))} />)
       </SliderDots>
+      <SliderArrows>
+        <SliderPrevArrow onClick={() => dispatch(sliderActions.prevSlide())} />
+        <SliderNextArrow onClick={() => dispatch(sliderActions.nextSlide())} />
+      </SliderArrows>
     </SliderWrapper>
+  )
 }
 ```
 
