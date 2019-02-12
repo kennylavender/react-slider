@@ -116,7 +116,9 @@ const HomeSlider = () => {
         ))}
       </SliderSlides>
       <SliderDots>
-        {mapStateToProps(state, mapDispatchToProps(dispatch, SliderDot))}
+        {/**
+          Todo: Can we simplify this for users? provide functions that do this mapping?
+        */}
         {slides.map((v, i) => (
           <SliderDot
             isCurrent={i === currentSlideIndex}
