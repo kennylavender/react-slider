@@ -34,7 +34,7 @@ Could use standard CSS ways of doing this:
   
 ## API Approaches
 
-## Allow a user to build their own Slider from our components
+### Allow a user to build their own Slider from our components
 
 Allowing a user to build their own slider provides much more flexibility for users that need it.
 
@@ -73,11 +73,13 @@ const Slider = ({ display, children }) => (
     </SliderDots>
   </SliderWrapper>
 )
+```
 
-## Provide configuration and state with a HOC
+### Provide configuration and state with a HOC
 
 Provide the user with a way to wrap a slider with
 
+```js
 const Slider = ({ state, actions }) => {
   return (
     <SliderWrapper>
