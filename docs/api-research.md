@@ -102,7 +102,7 @@ const SliderContainer = () => {
   )
 }
 ```
-### Provide a reducer and a black box Slider component
+### Provide a hook and a black box Slider component
 
 #### Approach issues
 - how to let the user hook into actions, `useReducer` does not allow for middleware.
@@ -113,22 +113,29 @@ const SliderContainer = () => {
 
 import {
   Slider,
-  configureSliderReducer,
+  userSlider,
 } from '@kennylavender/react-slider'
 
 const HomeSlider = () => {
+
   const options = {
+    autoPlay: true,
+    autoPlaySpeed: 3000,
+    autoPlayPauseOnHover: true,
     displayDots: false
   }
   
-  const sliderReducer = configureSliderReducer(options)
-  const [state, dispatch] = useReducer(sliderReducer, sliderReducer())
+  const [state, dispatch] = userSlider(options)
   
   return <Slider state={state} dispatch={dispatch} />
 }
 ```
 
-### Provide a reducer, individual components and examples
+### Provide a hook, individual components and examples
+
+We could provide the building block components, a hook to manage state automatically, and document examples on how to hook them up.
+
+I think this gives us maximum flexibility and automation.
 
 ```js
 import React from "react";
@@ -141,28 +148,36 @@ import {
   SliderNextArrow,
   SliderDots,
   SliderDot,
-  sliderReducer,
-  sliderAutoPlay,
+  useSlider,
+  sliderActions,
+  sliderSelectors
 } from "@kennylavender/react-slider";
 
 const HomeSlider = () => {
-  const [state, dispatch] = useReducer(sliderReducer, sliderReducer());
 
-  // maybe we can use individual effects for things like autoPlay instead of doing them with options?
-  useEffect(sliderAutoPlay(dispatch));
-
+  const options = {
+    autoPlay: true,
+    autoPlaySpeed: 3000,
+    autoPlayPauseOnHover: true
+  }
+  
+  const [state, dispatch] = useSlider(options);
+  
+  const { currentSlideIndex } = getViewState(state)
+  
   const slides = [<p>Slide 1</p>, <p>Slide 2</p>];
-
+  
   return (
     <SliderWrapper>
       <SliderSlides>
         {slides.map(v => (
-          <SliderSlide>{v}</SliderSlide>
+          <SliderSlide isCurrent={i === currentSlideIndex}>{v}</SliderSlide>
         ))}
       </SliderSlides>
       <SliderDots>
         {slides.map((v, i) => (
           <SliderDot
+            isCurrent={i === currentSlideIndex}
             onClick={() => dispatch(sliderActions.goToSlideIndex(i))}
           />
         ))}
