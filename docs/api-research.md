@@ -45,7 +45,7 @@ While this approach is nice and easy for the user, it has some limitations as de
 - doesn't allow for easy style overrides using techniques like [MATERIAL-UI]
 
 ```js
-
+import React from 'react'
 import {
   Slider,
   userSlider,
