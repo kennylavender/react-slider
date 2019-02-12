@@ -145,4 +145,69 @@ Questions this version has not answered yet
 - How does a user provide handlers for dispatched actions to extend behavior?
 
 
+### Provide a reducer, effects, individual components and examples
+
+Providing a reducer provides more flexibility because the reducer could be used for redux as well as useState.
+
+```js
+import React, { useReducer, useEffect } from "react";
+import {
+  SliderWrapper,
+  SliderItems,
+  SliderItem,
+  SliderArrows,
+  SliderPrevArrow,
+  SliderNextArrow,
+  SliderDots,
+  SliderDot,
+  createSliderReducer,
+  sliderActions,
+  sliderSelectors
+} from "@kennylavender/react-slider";
+
+const HomeSlider = () => {
+
+  const sliderReducer = createSliderReducer()
+  
+  const [state, dispatch] = useReducer(sliderReducer, sliderReducer());
+  
+  const { currentSlideIndex } = getViewState(state)
+  
+  useEffect(sliderAutoPlay({
+    autoPlay: true,
+    autoPlaySpeed: 3000,
+    autoPlayPauseOnHover: true
+  }, dispatch))
+  
+  const slides = [<p>Slide 1</p>, <p>Slide 2</p>];
+  
+  return (
+    <SliderWrapper>
+      <SliderSlides>
+        {slides.map((v, i) => (
+          <SliderSlide isCurrent={i === currentSlideIndex}>{v}</SliderSlide>
+        ))}
+      </SliderSlides>
+      <SliderDots>
+        {/**
+          Todo: Can we simplify this for users? provide functions that help with this mapping?
+          maybe hide some logic to assist with breaking changes?
+        */}
+        {slides.map((v, i) => (
+          <SliderDot
+            isCurrent={i === currentSlideIndex}
+            onClick={() => dispatch(sliderActions.goToSlideIndex(i))}
+          />
+        ))}
+      </SliderDots>
+      <SliderArrows>
+        <SliderPrevArrow onClick={() => dispatch(sliderActions.prevSlide())} />
+        <SliderNextArrow onClick={() => dispatch(sliderActions.nextSlide())} />
+      </SliderArrows>
+    </SliderWrapper>
+  );
+};
+
+export default HomeSlider
+```
 [MATERIAL-UI]: https://material-ui.com/
