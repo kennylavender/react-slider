@@ -117,7 +117,8 @@ const HomeSlider = () => {
       </SliderSlides>
       <SliderDots>
         {/**
-          Todo: Can we simplify this for users? provide functions that help with this mapping? maybe hide some logic to assist with breaking changes?
+          Todo: Can we simplify this for users? provide functions that help with this mapping?
+          maybe hide some logic to assist with breaking changes?
         */}
         {slides.map((v, i) => (
           <SliderDot
