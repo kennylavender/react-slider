@@ -12,11 +12,11 @@ Exploring different ways one might want use the slider API.
   
 ## Black Box vs White Box components
 
-Not sure if this is the correct way to define these types of components, but for now until I have time to reasearch if there is a term to define them I am going to use it.
+Not sure if this is the correct way to define these types of components, there may already be terms for these types, but I am going with this for now until I research it :)
 
 __Black Box components__ self render based on given data and options. They allow the user to provide handlers for events to extend the components behaviors. The issue with black box components is that they limit flexibilty to the provided options. The options can quickly get out of hand when attempting to match as many of your users use cases as possible. Ryan Florence has a good talk about this, [Ryan Florence - Compound Components](https://youtu.be/hEGg-3pIHlE)
 
-__White Box components__ provide all the building block components and expect the user to provide the connecting logic and state.
+__White Box components__ provide all the building block components and expect the user to provide the connecting logic and state. I would say [MATERIAL-UI] is an example of this, it provides the building blocks, all state management is up to the user.
 
 ## Allow users to override styles
 
