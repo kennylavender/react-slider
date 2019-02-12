@@ -142,7 +142,7 @@ export default HomeSlider
 
 Questions this version has not answered yet
 - How does a user override styles besides providing their own components?
-- How does a user hook into dispatched actions?
+- How does a user provide handlers for dispatched actions to extend behavior?
 
 
 [MATERIAL-UI]: https://material-ui.com/
