@@ -10,13 +10,15 @@ Exploring different ways one might want use the slider API.
   - A user may need to have custom next/prev arrows
   - A user may want external components that control the slider
   
-## Black Box vs White Box components
+## Black Box vs White Box component API?
 
 Not sure if this is the correct way to define these types of components, there may already be terms for these types, but I am going with this for now until I research it :)
 
-__Black Box components__ self render based on given data and options. They allow the user to provide handlers for events to extend the components behaviors. The issue with black box components is that they limit flexibilty to the provided options. The options can quickly get out of hand when attempting to match as many of your users use cases as possible. Ryan Florence has a good talk about this, [Ryan Florence - Compound Components](https://youtu.be/hEGg-3pIHlE)
+There was a good twitter thread on this here: https://twitter.com/brad_frost/status/1090733766950223878
 
-__White Box components__ provide all the building block components and expect the user to provide the connecting logic and state. I would say [MATERIAL-UI] is an example of this, it provides the building blocks, all state management is up to the user.
+__Black Box component api__: components self render based on given data and options. They allow the user to provide handlers for events to extend the components behaviors. The issue with black box components is that they limit flexibilty to the provided options. The options can quickly get out of hand when attempting to match as many of your users use cases as possible. Ryan Florence has a good talk about this, [Ryan Florence - Compound Components](https://youtu.be/hEGg-3pIHlE)
+
+__White Box component api__: building block components are provided and the user is expected to provide the connecting logic and state management. I would say [MATERIAL-UI] is an example of this, it provides the building blocks, all state management is up to the user.
 
 ## Allow users to override styles
 
