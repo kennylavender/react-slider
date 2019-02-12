@@ -32,6 +32,8 @@ Could use standard CSS ways of doing this:
   - attach class names to components that can be used to override styles.
   - could also allow a user to provide a special prefix to the class names
 
+## API Approaches
+
 ### Provide a hook and a black box Slider component
 
 While this approach is nice and easy for the user, it has some limitations as described above for black box component api.
