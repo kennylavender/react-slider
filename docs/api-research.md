@@ -31,82 +31,13 @@ Could use standard CSS ways of doing this:
 - use specificity
   - attach class names to components that can be used to override styles.
   - could also allow a user to provide a special prefix to the class names
-  
-## API Approaches
 
-### Allow a user to build their own Slider from our components
-
-Allowing a user to build their own slider provides much more flexibility for users that need it.
-
-```js
-import {
-  SliderWrapper,
-  SliderItems,
-  SliderItem,
-  SliderArrows,
-  SliderPrevArrow,
-  SliderNextArrow,
-  SliderDots,
-  SliderDot
-} from '@kennylavender/react-slider'
-  
-
-const Slider = ({ display, children }) => (
-  <SliderWrapper>
-    <SliderItems>
-      <SliderItem />
-      <SliderItem />
-      <SliderItem />
-      <SliderItem />
-      <SliderItem />
-    </SliderItems>
-    <SliderArrows>
-      <SliderPrevArrow />
-      <SliderNextArrow />
-    </SliderArrows>
-    <SliderDots>
-      <SliderDot onClick={} />
-      <SliderDot />
-      <SliderDot />
-      <SliderDot />
-      <SliderDot />
-    </SliderDots>
-  </SliderWrapper>
-)
-```
-
-### Provide configuration and state with a HOC
-
-Provide the user with a way to wrap a slider with
-
-```js
-const Slider = ({ state, actions }) => {
-  return (
-    <SliderWrapper>
-      {
-        displayDots(state)
-        ? (
-          <SliderDots>
-            {children.map((v, i) => <SliderDot onClick={actions.moveToIndex(i)} />)}
-          </SliderDots>
-        ) : (
-          null
-        )
-      }
-    </SliderWrapper>
-  )
-}
-
-const SliderContainer = () => {
-  const [state, dispatch] = useSliderState()
-  return (
-    <Slider state={state} dispatch={dispatch} />
-  )
-}
-```
 ### Provide a hook and a black box Slider component
 
+While this approach is nice and easy for the user, it has some limitations as described above for black box component api.
+
 #### Approach issues
+
 - how to let the user hook into actions, `useReducer` does not allow for middleware.
   - the user could override dispatch for a middleware like effect, but I am not very fond of this idea.
 - doesn't allow for easy style overrides using techniques like [MATERIAL-UI]
@@ -129,7 +60,13 @@ const HomeSlider = () => {
   
   const [state, dispatch] = userSlider(options)
   
-  return <Slider state={state} dispatch={dispatch} />
+  return (
+    <Slider state={state} dispatch={dispatch}>
+      <p>Slide 1</p>
+      <p>Slide 2</p>
+      <p>Slide 3</p>
+    </Slider>
+  )
 }
 ```
 
