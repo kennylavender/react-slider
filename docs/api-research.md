@@ -159,19 +159,4 @@ const HomeSlider = () => {
 }
 ```
 
-## Terms
-
-### Black Box Component
-
-A component that takes data, options and handlers and self renders children.
-
-__Example:__ This example would render dots and arrows and attach all handlers.
-
-```js
-<Slider>
-  <p>Slide 1</p>
-  <p>Slide 2</p>
-</Slider>
-```
-
 [MATERIAL-UI]: https://material-ui.com/
