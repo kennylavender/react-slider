@@ -113,7 +113,7 @@ const HomeSlider = () => {
   return (
     <SliderWrapper>
       <SliderSlides>
-        {slides.map(v => (
+        {slides.map((v, i) => (
           <SliderSlide isCurrent={i === currentSlideIndex}>{v}</SliderSlide>
         ))}
       </SliderSlides>
