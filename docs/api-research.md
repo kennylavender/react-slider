@@ -147,7 +147,7 @@ Questions this version has not answered yet
 
 ### Provide a reducer, effects, individual components and examples
 
-Providing a reducer and effects instead of a hook provides more flexibility because the reducer could be used for redux as well as useState.
+Providing a reducer and effects instead of a hook provides more flexibility because the reducer could be used for redux as well as the useReducer hook.
 
 ```js
 import React, { useReducer, useEffect } from "react";
