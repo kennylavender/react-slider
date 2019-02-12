@@ -20,6 +20,8 @@ __Black Box component api__: components self render based on given data and opti
 
 __White Box component api__: building block components are provided and the user is expected to provide the connecting logic and state management. I would say [MATERIAL-UI] is an example of this, it provides the building blocks, all state management is up to the user.
 
+Maybe we can provide a white box component api, but then also provide an easy way to create and connect state management?
+
 ## Allow users to override styles
 
 I am not very sure of a good way to do this at the moment. [MATERIAL-UI] has pretty interesting solution and seems to be the most flexible I have seen. Using a technique like [MATERIAL-UI] though does require that a user render each component themsevles, meaning no black box Slider component.
