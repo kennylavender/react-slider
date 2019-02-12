@@ -131,6 +131,7 @@ const HomeSlider = () => {
 ### Provide a reducer, individual components and examples
 
 ```js
+import React from "react";
 import {
   SliderWrapper,
   SliderItems,
@@ -141,36 +142,39 @@ import {
   SliderDots,
   SliderDot,
   sliderReducer,
-  sliderAutoPlay
-} from '@kennylavender/react-slider'
+  sliderAutoPlay,
+} from "@kennylavender/react-slider";
 
 const HomeSlider = () => {
+  const [state, dispatch] = useReducer(sliderReducer, sliderReducer());
 
-  const [state, dispatch] = useReducer(sliderReducer, sliderReducer())
-  
   // maybe we can use individual effects for things like autoPlay instead of doing them with options?
-  useEffect(sliderAutoPlay(dispatch))
-  
-  const slides = [
-    <p>Slide 1</p>
-    <p>Slide 2</p>
-  ]
-  
+  useEffect(sliderAutoPlay(dispatch));
+
+  const slides = [<p>Slide 1</p>, <p>Slide 2</p>];
+
   return (
     <SliderWrapper>
       <SliderSlides>
-        {slides.map(v, => <SliderSlide>{v}</SliderSlide>}
+        {slides.map(v => (
+          <SliderSlide>{v}</SliderSlide>
+        ))}
       </SliderSlides>
       <SliderDots>
-        {slides.map((v,i) => <SliderDot onClick={() => dispatch(sliderActions.goToSlideIndex(i))} />)
+        {slides.map((v, i) => (
+          <SliderDot
+            onClick={() => dispatch(sliderActions.goToSlideIndex(i))}
+          />
+        ))}
       </SliderDots>
       <SliderArrows>
         <SliderPrevArrow onClick={() => dispatch(sliderActions.prevSlide())} />
         <SliderNextArrow onClick={() => dispatch(sliderActions.nextSlide())} />
       </SliderArrows>
     </SliderWrapper>
-  )
-}
+  );
+};
+
 ```
 
 [MATERIAL-UI]: https://material-ui.com/
