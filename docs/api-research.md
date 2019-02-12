@@ -70,6 +70,8 @@ const HomeSlider = () => {
     </Slider>
   )
 }
+
+export default HomeSlider
 ```
 
 ### Provide a hook, individual components and examples
@@ -135,6 +137,12 @@ const HomeSlider = () => {
   );
 };
 
+export default HomeSlider
 ```
+
+Questions this version has not answered yet
+- How does a user override styles besides providing their own components?
+- How does a user hook into dispatched actions?
+
 
 [MATERIAL-UI]: https://material-ui.com/
