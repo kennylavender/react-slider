@@ -137,7 +137,7 @@ const HomeSlider = () => {
 
 We could provide the building block components, a hook to manage state automatically, and document examples on how to hook them up.
 
-I think this gives us maximum flexibility and automation.
+I think this gives us maximum flexibility and automation. I am liking the feel of this API, and I think it has room to be improved further.
 
 ```js
 import React from "react";
@@ -177,6 +177,7 @@ const HomeSlider = () => {
         ))}
       </SliderSlides>
       <SliderDots>
+        {mapStateToProps(state, mapDispatchToProps(dispatch, SliderDot))}
         {slides.map((v, i) => (
           <SliderDot
             isCurrent={i === currentSlideIndex}
